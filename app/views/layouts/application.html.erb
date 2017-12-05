@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Programerhub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Rede Social</title>
+	  <%= csrf_meta_tags %>
 
-<%= yield %>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-</body>
+	</head>
+	 <body>
+	    <header>
+	      <%= render "shared/navbar" %>
+	    </header>
+	    <main>
+	      <div class="container">
+	        <%= yield %>
+	      </div>
+	    </main>
+	 
+	    <footer>
+	      <%= render "shared/footer" %>
+	    </footer>
+	  </body>
 </html>
