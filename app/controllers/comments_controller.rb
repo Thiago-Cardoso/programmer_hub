@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 	
 	load_and_authorize_resource
-	before_action :set_comment, only: [:destroy, :update]
+	before_action :set_comment, only: [:edit, :destroy, :update]
 	before_action :set_post, only: [:create]
 
   def create
@@ -28,6 +28,15 @@ class CommentsController < ApplicationController
   end
 
   def update
+    respond_to do |format|  #se editar o comment rendeniza
+       if @comment.update(comment_params)
+        format.json { render json: @comment, status: :created }
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' } #sucesso
+      else
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { redirect_to back }
+      end
+    end
   end
 
 

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col m12">
+    <div class="row">
+    	 <div class="row">
+          <div class="col m12">
+            <h5>Edit Comment</h5>
+          </div>
+        </div>
+      <div class="card hoverable">
+        <div class="card-content">
+          <div class="row">
+            <div class="col m12">
+    		 <%= form_for @comment do |f| %>
+              <div class="input-field">
+                <%= f.text_area :comment, placeholder: "What are you thinking about this post?", class: "materialize-textarea col l9" %>
+                <%= f.hidden_field :comment_id, value: @comment_id %>
+              </div>
+              <%= f.submit "Comment", class: "btn red lighten-2" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+     
+    </div>
+  </div>
+</div>
