@@ -1,2 +1,10 @@
-<h1>Users#followings</h1>
-<p>Find me in app/views/users/followings.html.erb</p>
+<div class="row">
+  <div class="col s12 m12 l4">
+    <%= render 'shared/userinfo' %>
+  </div>
+  <div class="col l1"></div>
+  <div class="col l7 page-content">
+    <h4 class="follow-title">Following</h4>
+    <%= render 'shared/list-user', users: @following %>
+  </div>
+</div>
