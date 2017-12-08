@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 	
 	load_and_authorize_resource
 	before_action :set_comment, only: [:destroy, :update]
-  	before_action :set_post, only: [:create]
+	before_action :set_post, only: [:create]
 
   def create
     @comment = @post.comments.create(comment_params)

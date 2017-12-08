@@ -2,7 +2,7 @@
   <div class="card-content">
     <div class="row">
       <div class="col s2 m2 l2">
-        <img src="<%= post.user.avatar.thumb.url %>" alt="" class="circle responsive-img left">
+       
       </div>
       <div class="col s6 m6 l6">
         <p class="post-user-name"><%= link_to post.user.name, user_path(post.user_id) %></p>
@@ -14,6 +14,11 @@
         <div class="col s1 m1 l1">
           <%= link_to post_path(post), method: "delete" do %>
             <i class="material-icons post-options">delete</i>
+          <% end %>
+        </div>
+        <div class="col s1 m1 l1">
+          <%= link_to edit_post_path(post) do %>
+           <i class="material-icons">edit</i>
           <% end %>
         </div>
       <% end %>

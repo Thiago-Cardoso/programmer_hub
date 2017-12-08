@@ -42,9 +42,24 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @user = current_user    #pega o usuario atual
+    posts = current_user.posts.map {|post| post} #pega todos os posts do usuario (transforma num array de posts)
+    current_user.all_following.each { |user| user.posts.each{|post| posts << post } } #pega todos os usuarios que segue
+    @posts = posts.sort_by &:created_at #ordena por data de criacao mostrando o ultimo post
+
   end
 
   def update
+
+    respond_to do |format|  #se salvar o post rendeniza
+       if @post.update(post_params)
+        format.json { render json: @post, status: :created }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' } #sucesso
+      else
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { redirect_to posts_path }
+      end
+    end
   end
 
   private
